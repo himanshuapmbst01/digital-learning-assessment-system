@@ -1,0 +1,122 @@
+<html th:replace="~{admin/adminbase::layout(~{::section})}">
+<head>
+</head>
+<body>
+	<section>
+		<h1 class="text-center text-info">Manage All Students</h1>
+
+		<div class="row">
+			<div class="col-sm-12 mx-auto p-3 bg-white shadow rounded-2">
+				<div class="table-responsive">
+					<table id="myTable" class="table table-bordered table-striped display">
+						<thead class="text-center table-dark">
+							<tr>
+								<th class="text-center">Sr. No.</th>
+								<th class="text-center">Enrollment No.</th>
+								<th class="text-center">Profile</th>
+								
+								<th class="text-center">Student Name</th>
+								<th class="text-center">Contact No.</th>
+								<th class="text-center">Email</th>
+								<th class="text-center">Gender</th>
+								<th class="text-center">Father Name</th>
+								<th class="text-center">Mother Name</th>
+								<th class="text-center">Address</th>
+								<th class="text-center">Course</th>
+								<th class="text-center">Branch</th>
+								<th class="text-center">Year</th>
+								<th class="text-center">Registration Date</th>
+								<!-- <th class="text-center">Edit</th> -->
+								<th class="text-center">Delete</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							<tr th:each="s, srno:${slist}">
+								<td class="text-center" th:text="${srno.index+1}">Sr. No.</td>
+								<td class="text-center" th:text="${s.enrollmentno}">Enrollment No.</td>
+								<td class="text-center">
+									<img alt="Profile Picture" style="cursor: pointer;" th:src="${s.profilepic != null and !s.profilepic.isEmpty() ? '/profile/' + s.profilepic : '../img/user_img.jpg'}" class="profile-img" id="profile-img">	
+								</td>
+								
+								<td class="text-center" th:text="${s.name}">Student Name</td>
+								<td class="text-center" th:text="${s.contactno}">Contact No.</td>
+								<td class="text-center" th:text="${s.emailaddress}">Email</td>
+								<td class="text-center" th:text="${s.gender}">Gender</td>
+								<td class="text-center" th:text="${s.fname}">Father Name</td>
+								<td class="text-center" th:text="${s.mname}">Mother Name</td>
+								<td class="text-center" th:text="${s.address}">Address</td>
+								<td class="text-center" th:text="${s.program}">Course</td>
+								<td class="text-center" th:text="${s.branch}">Branch</td>
+								<td class="text-center" th:text="${s.year}">Year</td>
+								<td class="text-center" th:text="${s.regdate}">Registration Date</td>
+								<!-- <td class="text-center">
+									<a th:href="@{editstudent(enroll=${s.enrollmentno})}" class="btn btn-success rounded-0">Edit</a>
+								</td> -->
+						
+								<td>
+									<a th:href="@{deletestudent(enroll=${s.enrollmentno})}">
+										<button class="btn btn-danger rounded-0" type="button" onclick="return confirm('Are you sure want to delete?');">Delete</button>
+									</a>
+								</td>
+							</tr>						
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- Modal for displaying the current image -->
+<div class="modal fade" style="left: 50; top: 40;" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width: 80%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Profile Picture</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" class="img-fluid" alt="Profile Image">
+      </div>
+    </div>
+  </div>
+</div>
+		
+
+<!-- jQuery (required for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Popper.js (required for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS (For modal functionality) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<!-- JavaScript to open the modal and set the image -->
+	<script>
+  // Select all profile images with the class 'profile-img'
+  var profileImages = document.querySelectorAll('.profile-img'); 
+
+  // Modal elements
+  var modalImage = document.getElementById('modalImage');
+  var imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+  // Ensure that profileImages is not empty
+  if (profileImages.length > 0) {
+    profileImages.forEach(function(profileImage) {
+      // Add click event to each profile image
+      profileImage.addEventListener('click', function() {
+        var imgSrc = profileImage.getAttribute('src'); // Get the source of the clicked image
+        modalImage.setAttribute('src', imgSrc); // Set the source of the image in the modal
+        imageModal.show(); // Show the modal manually
+      });
+    });
+  } else {
+    console.error('No profile images found.');
+  }
+</script>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<html th:replace="base::layout(~{::section})">
+<head>
+
+</head>
+
+<body>
+	<section>
+	
+		<!-- slider like image start -->
+    <div class="row header-slider-course m-0">
+      <div class="col-sm-12 p-0">
+        <div class="row py-5 m-0">
+          <div class="col-sm-10 mx-auto mt-5 pt-5">
+            <h3>Student Registration<span style="color: #FFA500; margin-left: -20px;">_______</span></h3>
+            <h6 class="text-end text-white"><a href="index.html" style="color:white;text-decoration:none"><i
+                  class="fa-solid fa-house"></i> Home</a> / Registration</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slider like image end -->
+    
+		<div class="row m-0">
+			
+			<div class="container my-5">
+    <div class="col-md-8 mx-auto">
+        <div class="card shadow-lg p-5 pb-4">
+        	<h2 class="text-center pb-4">Student Registration</h2>
+        	<div th:if="${message}">
+				<p th:text="${message}" class="alert alert-success py-2"></p>
+			</div>
+             <form method="post" th:object="${dto}">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Enrollment No</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="${dto.enrollmentno}" class="form-control" placeholder="Enter your enrollment no..." required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="${dto.name}" class="form-control" placeholder="Enter your name..." required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Father's Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="${dto.fname}" class="form-control" placeholder="Enter your father's name..." required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Mother's Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="${dto.mname}" class="form-control" placeholder="Enter your mother's name..." required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Gender</label>
+                    <div class="col-sm-8">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="${dto.gender}" value="male">
+                            <label class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="${dto.gender}" value="female">
+                            <label class="form-check-label">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Address</label>
+                    <div class="col-sm-8">
+                        <textarea th:field="${dto.address}" class="form-control" placeholder="Enter your address..." rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Program</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" th:field="${dto.program}">
+                            <option value="BCA">BCA</option>
+                            <option value="MCA">MCA</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="B. Tech">B. Tech</option>
+                            <option value="M. Tech">M. Tech</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Branch</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" th:field="${dto.branch}">
+                            <option value="IT">IT</option>
+                            <option value="CS">CS</option>
+                            <option value="AI/ML">AI/ML</option>
+                            <option value="Electronics">Electronics</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Year</label>
+                    <div class="col-sm-8">
+                        <select class="form-select" th:field="${dto.year}">
+                            <option value="1st year">1st Year</option>
+                            <option value="2nd year">2nd Year</option>
+                            <option value="3rd year">3rd Year</option>
+                            <option value="4th year">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Contact No</label>
+                    <div class="col-sm-8">
+                        <input type="number" th:field="${dto.contactno}" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Email Address</label>
+                    <div class="col-sm-8">
+                        <input type="email" id="email" th:field="${dto.emailaddress}" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Password</label>
+                    <div class="col-sm-8">
+                        <input type="password" th:field="${dto.password}" class="form-control">
+                    </div>
+                </div>
+                <div class="text-center pt-4">
+                    <button class="btn btn-primary w-50 mx-auto" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+			
+		</div>
+
+	</section>
+</body>
+</html>

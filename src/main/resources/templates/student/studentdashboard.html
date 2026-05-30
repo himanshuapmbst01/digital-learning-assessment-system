@@ -1,0 +1,173 @@
+<html th:replace="~{student/studentbase::layout(~{::section})}">
+<head>
+</head>
+
+<body>
+	<section>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet"/>
+		<div class="row">
+			<h1 class="text-center text-primary">Welcome Back!</h1>
+			<!-- Student Profile -->
+			<div class="student-profile py-4">
+				<div class="container">
+					<div class="row px-md-5 px-2">
+						<div class="col-lg-4">
+							<div class="card shadow-sm bg-white">
+								<div class="card-header text-center">
+									<img class="profile_img" th:if="${stdinfo.profilepic}" th:src="@{'/profile/'+${stdinfo.profilepic}}" alt="">
+									<img class="profile_img" th:unless="${stdinfo.profilepic}" src="../img/user_img.jpg" alt="">
+									
+									<h3 class="text-black" th:text="${stdinfo.name}">Ishmam Ahasan Samin</h3>
+								</div>
+								<div class="card-body text-center">
+									<p class="mb-0 pt-2">
+										<b class="pr-1">Enroll ID :</b> <span th:text="${stdinfo.enrollmentno}">321000001</span>
+									</p>
+									<!-- <p class="mb-0">
+										<strong class="pr-1">Class:</strong>4
+									</p>
+									<p class="mb-0">
+										<strong class="pr-1">Section:</strong>A
+									</p> -->
+									<p class="mb-0 pt-3">
+										<form method="post" class="px-2" style="display: flex; justify-content: space-around;"  enctype="multipart/form-data">
+			 								<input type="file" name="file" class="form-control w-50 mx-1" required="required">
+			 								<button type="submit" class="btn btn-primary w-50 mx-1">Upload Pic</button>
+			 							</form>
+									</p>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="card shadow-sm bg-white">
+								<div class="card-header border-0">
+									<h3 class="mb-0 text-black">
+										<i class="far fa-clone pr-1"></i> General Information
+									</h3>
+								</div>
+								<div class="card-body pt-0">
+									<table class="table table-bordered mt-2">
+										<tr>
+											<th width="30%">Enrollment No</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.enrollmentno}">125</td>
+										</tr>
+										<tr>
+											<th width="30%">Name</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.name}">Manish Yadav</td>
+										</tr>
+										<tr>
+											<th width="30%">Gender</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.gender}">Male</td>
+										</tr>
+										<tr>
+											<th width="30%">Contact No</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.contactno}">8765432</td>
+										</tr>
+										<tr>
+											<th width="30%">Email Address</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.emailaddress}">manishyadav.softpro@gmail.com</td>
+										</tr>
+										
+										<tr>
+											<th width="30%">Father Name</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.fname}">Papa Ji</td>
+										</tr>
+										
+										<tr>
+											<th width="30%">Mother Name</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.mname}">Mummy</td>
+										</tr>
+										<tr>
+											<th width="30%">Address</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.address}">Lucknow</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+							
+							
+							<div class="card shadow-sm mt-4 bg-white">
+								<div class="card-header border-0">
+									<h3 class="mb-0 text-black">
+										<i class="far fa-clone pr-1"></i> Academic Information
+									</h3>
+								</div>
+								<div class="card-body pt-0">
+									<table class="table table-bordered mt-2">
+										<tr>
+											<th width="30%">Course</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.program}">B. Tech</td>
+										</tr>
+										<tr>
+											<th width="30%">Branch</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.branch}">CS</td>
+										</tr>
+										<tr>
+											<th width="30%">Academic Year</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.year}">2024</td>
+										</tr>
+										<tr>
+											<th width="30%">Registration Date</th>
+											<td width="2%">:</td>
+											<td th:text="${stdinfo.regdate}">Group</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<style>
+		
+.table-bordered{
+	border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+.student-profile .card {
+	border-radius: 10px;
+}
+
+.student-profile .card .card-header .profile_img {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	margin: 10px auto;
+	border: 10px solid #ccc;
+	border-radius: 50%;
+}
+
+.student-profile .card h3 {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.student-profile .card p {
+	font-size: 16px;
+	color: #000;
+}
+
+.student-profile .table th, .student-profile .table td {
+	font-size: 14px;
+	padding: 15px 15px;
+	color: #000;
+}
+</style>
+	</section>
+</body>
+</html>

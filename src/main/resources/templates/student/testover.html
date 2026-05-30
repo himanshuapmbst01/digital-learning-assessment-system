@@ -1,0 +1,19 @@
+<html th:replace="~{student/studentbase::layout(~{::section})}">
+<head></head>
+
+<body>
+	<section>
+		<div class="row">
+			<div class="col-sm-8 p-5 mx-auto shadow bg-white text-center">
+				<h1 class="text-center" style="color: orangered;">
+					Congratulations!!! <span th:text="${stdinfo.name}"></span> 🎉
+				</h1>
+				<p class="text-dark">You have submitted your test successfully<br>
+					Now you can see your result in your result section
+				</p>
+				<a style="background-color:orangered;" class="btn rounded-5 px-4 py-2 text-white" href="result">See Result</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

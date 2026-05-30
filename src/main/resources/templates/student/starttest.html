@@ -1,0 +1,325 @@
+<html th:replace="~{student/studentbase::layout(~{::section})}">
+<head></head>
+
+<body>
+	<section>
+	
+	<style>
+		.modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modal content */
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Close button */
+        .modal-close {
+            cursor: pointer;
+            background: #ef662f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+	
+	
+	</style>
+		<div class="row px-5 p-2">
+			<div class="col-sm-12 pb-3">
+				<div class="box h-100  border-1 shadow-lg  p-4"
+					style="border-radius: 5px; background-color: white;">
+					<h5 th:text="${testname}" class="mt-2 fw-bold text-center"
+						style="color: orangered; font-weight: 700;">Online Test</h5>
+				</div>
+			</div>
+
+			<input type="hidden" id="jsonData" th:value="${json}" />
+			<div class="container px-5">
+				<div class="row text-dark">
+					<div class="col-sm-6 text-center">
+						<b>Total Alloted Time :</b> <label th:text="${tt}" id="TTime"
+							class="form-label"></label> min
+					</div>
+					<div class="col-sm-6 text-center">
+						<b>Total Alloted Question :</b> <label th:text="${tq}"
+							id="TQuestion" class="form-label"></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 p-2 px-3 text-white"
+						style="background-color: orangered;">
+						<span> <label id="lblqno"
+							style="font-size: 20px; font-weight: 600;"></label>. &nbsp;
+						</span> <span> <label id="lblquestion" style="font-size: 20px;"></label>
+						</span>
+					</div>
+				</div>
+
+				<!-- option start -->
+
+				<div class="row mt-4">
+					<div class="col-sm-6">
+						<div class="alert alert-secondary px-5 py-2 pt-3">
+							<h6 class="p-0 m-0">
+								<input type="radio" id="a" class="form-check-input"
+									name="option" value="A" /> &nbsp; &nbsp; <label
+									class="form-label" style="font-size: 18px;" for="A" id="lblA"></label>
+							</h6>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="alert alert-secondary px-5 py-2 pt-3">
+							<h6 class="p-0 m-0">
+								<input type="radio" id="b" class="form-check-input"
+									name="option" value="B" /> &nbsp; &nbsp; <label
+									class="form-label" style="font-size: 18px;" for="B" id="lblB"></label>
+							</h6>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mt-4">
+					<div class="col-sm-6">
+						<div class="alert alert-secondary px-5 pb-2 pt-3">
+							<h6 class="p-0 m-0">
+								<input type="radio" id="c" class="form-check-input"
+									name="option" value="C" /> &nbsp; &nbsp; <label
+									class="form-label" style="font-size: 18px;" for="C" id="lblC"></label>
+							</h6>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="alert alert-secondary px-5 pb-2 pt-3">
+							<h6 class="p-0 m-0">
+								<input type="radio" id="d" class="form-check-input"
+									name="option" value="D" /> &nbsp; &nbsp; <label
+									class="form-label" style="font-size: 18px;" for="D" id="lblD"></label>
+							</h6>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6 mt-3 text-center pt-2 text-dark">
+						<span style="font-size: 18px; font-weight: 600;"> Time Left
+							: <label id="timer" style="font-size: 18px; font-weight: 600;"></label>
+						</span>
+					</div>
+					<div class="col-sm-6 mt-3 text-center">
+						<button type="button" id="ButtonNext" class="btn px-5 text-light"
+							style="background-color: orangered;">Next</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<form id="hiddenForm" action="/student/testover" method="POST">
+			<input type="hidden" name="t" id="totalInput"> 
+			<input type="hidden" name="s" id="scoreInput">
+		</form>
+
+		<div id="modal" class="modal-overlay">
+			<div class="modal-content text-center w-25 mx-auto text-dark">
+				<h2>Welcome to the Page!</h2>
+				<p>
+					Please do not exit Full Screen Mode <br> if you exit full
+					screen mode Test will be automatically submitted. <br>
+					<span class="fw-bold">Thank You</span>
+				</p>
+
+
+				<button class="modal-close" id="closeModal">Start Test</button>
+			</div>
+		</div>
+
+
+
+		<script src="../js/exam.js" type="text/javascript"></script>
+
+		<script>
+		// Variables to track full-screen exits
+		let fullScreenExitCount = 0;
+
+		function gofullscreen() {
+			const element = document.documentElement;
+			if (element.requestFullscreen) {
+				element.requestFullscreen();
+			} else if (element.webkitRequestFullscreen) {
+				element.webkitRequestFullscreen();
+			} else if (element.msRequestFullscreen) {
+				element.msRequestFullscreen();
+			} else {
+				alert('Fullscreen mode is not supported by your browser.');
+			}
+
+			// Listen for exit from full screen
+			document.addEventListener('fullscreenchange', checkFullScreenExit);
+			document.addEventListener('webkitfullscreenchange', checkFullScreenExit);
+			document.addEventListener('msfullscreenchange', checkFullScreenExit);
+		}
+
+		// Check if the user exits full screen
+		function checkFullScreenExit() {
+			if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.msFullscreenElement) {
+				fullScreenExitCount++;
+				if (fullScreenExitCount >= 2) {
+					// Before submitting, ensure total and score are correct
+					document.getElementById('totalInput').value = total;
+					document.getElementById('scoreInput').value = score;
+					document.getElementById('hiddenForm').submit(); // Automatically submit the test
+					alert("You exited full screen twice. The test will now be submitted.");
+				} else {
+					alert("You exited full screen. Please return to full screen to continue the test. Other Wise your test will be automatically will be submitted.");
+					gofullscreen(); // Prompt the user to return to full screen
+				}
+			}
+		}
+
+		// Delay timer until modal is closed
+		document.addEventListener('DOMContentLoaded', () => {
+			const modal = document.getElementById('modal');
+			modal.style.display = 'flex';
+
+			document.getElementById('closeModal').addEventListener('click', () => {
+				modal.style.display = 'none';
+				gofullscreen();
+				startTest(); // Start the test when the modal is closed
+			});
+		});
+
+
+
+
+		// Function to disable all keyboard keys during the exam
+		function disableKeyboard() {
+			document.addEventListener('keydown', function(e) {
+				e.preventDefault(); // Prevent the default action of the key press
+			});
+		}
+
+
+		document.addEventListener('keydown', function(e) {
+			// Disable Ctrl+T (new tab)
+			if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+				e.preventDefault();
+			}
+			
+			if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+				e.preventDefault();
+			}
+			// Disable Ctrl+N (new window)
+			if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+				e.preventDefault();
+			}
+			// Disable Ctrl+W (close tab)
+			if ((e.ctrlKey || e.metaKey) && e.key === 'w') {
+				e.preventDefault();
+			}
+			// Disable Escape key
+			if (e.key === 'Escape') {
+				e.preventDefault();
+			}
+
+			// Disable Alt key
+			if (e.key === 'Alt') {
+				e.preventDefault();
+			}
+		});
+
+		// Disable right-click context menu
+		document.addEventListener('contextmenu', function(e) {
+			e.preventDefault();
+		});
+
+		// Prevent window close (browser-level)
+		window.addEventListener('beforeunload', function(e) {
+			//e.preventDefault();
+			e.returnValue = '';// Chrome requires returnValue to be set
+		});
+
+
+		$(document).ready(function() {
+			$('#ButtonNext').on('click', gofullscreen);
+		});
+
+		// Event listener for "Next" button
+		/* $(document).ready(function() {
+			$('#ButtonNext').on('click', nextQuestion);
+		});
+		 */
+		
+		
+		
+		// Variables to track full-screen exits
+		/* let fullScreenExitCount = 0;
+
+		function gofullscreen() {
+		    const element = document.documentElement;
+		    if (element.requestFullscreen) {
+		        element.requestFullscreen();
+		    } else if (element.webkitRequestFullscreen) {
+		        element.webkitRequestFullscreen();
+		    } else if (element.msRequestFullscreen) {
+		        element.msRequestFullscreen();
+		    } else {
+		        alert('Fullscreen mode is not supported by your browser.');
+		    }
+
+		    // Listen for exit from full screen
+		    document.addEventListener('fullscreenchange', checkFullScreenExit);
+		    document.addEventListener('webkitfullscreenchange', checkFullScreenExit);
+		    document.addEventListener('msfullscreenchange', checkFullScreenExit);
+		}
+
+		// Check if the user exits full screen
+		function checkFullScreenExit() {
+		    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.msFullscreenElement) {
+		        fullScreenExitCount++;
+		        if (fullScreenExitCount >= 2) {
+		            alert("You exited full screen twice. The test will now be submitted.");
+					document.getElementById('totalInput').value = total;
+					document.getElementById('scoreInput').value = score;
+		            document.getElementById('hiddenForm').submit(); // Automatically submit the test
+		        } else {
+		            alert("You exited full screen. Please return to full screen to continue the test.");
+		            gofullscreen(); // Prompt the user to return to full screen
+		        }
+		    }
+		}
+
+		// Delay timer until modal is closed
+		document.addEventListener('DOMContentLoaded', () => {
+		    const modal = document.getElementById('modal');
+		    modal.style.display = 'flex';
+
+		    document.getElementById('closeModal').addEventListener('click', () => {
+		        modal.style.display = 'none';
+		        gofullscreen();
+		        startTest(); // Start the test when the modal is closed
+		    });
+		});
+
+		$(document).ready(function () {
+		    $('#ButtonNext').on('click', gofullscreen);
+		}); */
+		</script>
+	
+	</section>
+</body>
+</html>

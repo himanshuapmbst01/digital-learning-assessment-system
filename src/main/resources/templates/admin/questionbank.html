@@ -1,0 +1,54 @@
+<html th:replace="~{admin/adminbase::layout(~{::section})}">
+
+<body>
+<section>
+    <h3 class="text-center text-info">Manage All Questions</h3>
+
+    <div class="row">
+        <div class="col-sm-12 mx-auto p-3 bg-white shadow rounded-2">
+            <div class="table-responsive">
+                <table id="myTable" class="table table-bordered table-striped display">
+                    <thead class="text-center table-dark">
+                        <tr>
+                            <th class="text-center">Sr. No.</th>
+                            <th class="text-center">Year</th>
+                            <th class="text-center">Course</th>
+                            <th class="text-center">Branch</th>
+                            <th class="text-center">Question</th>
+                            <th class="text-center">Option A</th>
+                            <th class="text-center">Option B</th>
+                            <th class="text-center">Option C</th>
+                            <th class="text-center">Option D</th>
+                            <th class="text-center">Correct Answer</th>
+                            <th class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr th:each="q, srno: ${questionList}">
+                            <td th:text="${srno.index + 1}">1</td>
+                            <td th:text="${q.year}">Year</td>
+                            <td th:text="${q.course}">Course</td>
+                            <td th:text="${q.branch}">Branch</td>
+                            <td th:text="${q.question}">Question</td>
+                            <td th:text="${q.a}">Option A</td>
+                            <td th:text="${q.b}">Option B</td>
+                            <td th:text="${q.c}">Option C</td>
+                            <td th:text="${q.d}">Option D</td>
+                            <td th:text="${q.correct}">Correct Answer</td>
+                            <td>
+                                <a th:href="@{deletequestion(id=${q.id})}">
+                                    <button class="btn btn-danger rounded-0" type="button" onclick="return confirm('Are you sure you want to delete this question?');">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

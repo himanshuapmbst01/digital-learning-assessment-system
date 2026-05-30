@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:fragment="layout(content)">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>|| NOU ||</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/splide.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mainstyle.css">
+</head>
+
+<body>
+    <!-- outer start -->
+    <div class="container-fluid p-0">
+        <!-- header start -->
+        <div class="row bg-brown text-white py-2 m-0" style="border-bottom:3px dotted #FFA500">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-6 text-md-end text-center ">
+                        <p style="font-weight:500;" class="m-0"><i class="fa-solid fa-phone fa-spin"></i> +91 7080102007</p>
+                    </div>
+                    <div class="col-md-6 text-md-start text-center">
+                        <p style="font-weight:500;" class="m-0"><i class="fa-solid fa-envelope"></i> nouegyanhelp@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <p style="font-weight:500;" id="p1" class="m-0" ></p>
+            </div>
+        </div>
+
+        <div class="row bg-brown text-white pt-2 m-0" style="border-bottom:3px dotted #FFA500;">
+            <p class="text-center" style="font-size:1rem;font-weight:500;">
+            	For Admission and Examination related query,
+                Kindly call on University
+                helpline Numbers 9341508580,9341508577,0612-2201013 & 0612-2206916
+            </p>
+        </div>
+        <!-- header end -->
+
+        <!-- name and logo start -->
+        <div class="row py-2 m-0">
+            <div class="col-md-2 text-md-end text-center">
+                <img src="img/logo1.png" alt="Image not available" class="img-fluid" width="80px" />
+            </div>
+            <div class="col-md-6 my-auto px-3 text-md-start text-center">
+                <h4 class="text-brown fw-bold m-0 pt-2" style="font-size:24px; font-family:'Roboto Slab',serif;">NOU e-Gyan Portal</h4>
+                <p style="font-size:14px;">(A concept by Nalanda Open University)</p>
+            </div>
+            <div class="col-md-4 header-icon text-center my-auto">
+                <a href="#" style="color:#2FACE2;border:1px solid #2FACE2"><i class="fa-brands fa-twitter mt-2 pt-1"></i></a>
+                <a href="#" style="color:#3F5C9A;border:1px solid #3F5C9A"><i class="fa-brands fa-facebook-f mt-2 pt-1"></i></a>
+                <a href="#" style="color:#E94D71;border:1px solid #E94D71"><i class="fa-brands fa-instagram mt-2 pt-1"></i></a>
+                <a href="#" style="color:#017CB5;border:1px solid #017CB5"><i class="fa-brands fa-linkedin-in mt-2 pt-1"></i></a>
+                <a href="#" style="color:#DC3541;border:1px solid #DC3541"><i class="fa-brands fa-youtube mt-2 pt-1"></i></a>
+            </div>
+        </div>
+        <!-- name and logo end -->
+
+		<div class="row m-0">
+			<nav class="navbar navbar-expand-lg navbar-light py-3 w-100" style="background-color:rgba(0,0,0,0.75);position:absolute;z-index:5;">
+                    <div class="container-fluid px-5">
+                        <a class="navbar-brand ps-md-5 ps-sm-0 text-center" href="#">
+                        	<span style="color:white;font-size:28px;font-weight:bold;">WELCOME</span>
+                        	&nbsp;&nbsp;
+                        	<span style="color:#FFA500;font-size:24px;font-weight:bold;">Students</span>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-grey text-center" href="/" id="navbarDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Home
+                                    </a>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="/">Home</a></li>
+                                        <li><a class="dropdown-item" href="/aboutus">About Portal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-grey text-center" href="/services"><i class="fa-solid fa-text-width pe-2 d-xl-inline d-lg-block"></i>Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-grey text-center" href="/courses"><i class="fa-solid fa-book-open pe-2 d-xl-inline d-lg-block"></i>Courses</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link text-grey text-center" href="/registration"><i class="fa-solid fa-graduation-cap pe-2 d-xl-inline d-lg-block"></i>Registration</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-grey text-center" href="#" id="navbarDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-key fa-spin pe-2 d-xl-inline d-lg-block"></i>Login
+                                    </a>
+                                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                        <!-- <li><a class="dropdown-item" href="login.html">University Login</a></li> -->
+                                        <li><a class="dropdown-item" href="/stulogin">Student Login</a></li>
+                                        <li><a class="dropdown-item" href="/adminlogin">Admin Login</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-grey text-center" href="/contactus"><i class="fa-solid fa-phone fa-spin pe-2 d-xl-inline d-lg-block"></i>Contact</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>	
+		</div>
+        
+        <!-- whatsapp & button start -->
+        <div class="whatsapp">
+            <img src="img/w-icon.svg" width="70px" />
+        </div>
+
+        <a href="tel:7080102007" class="helpline-button pt-3" style="text-decoration:none;">
+            <h6 style="text-align:center;font-size:15px;line-height:1px;" class="me-2">E-gyan Helpline No.</h6>
+            <i class="fa-solid fa-phone fa-spin"></i> +91 7080102007
+        </a>
+        <!-- whatsapp & button end -->
+		
+		<!--Main Section from Other Pages  -->
+		<div th:replace="${content}"></div>
+	
+	
+	
+	
+        <!-- footer start -->
+        <div class="row m-0 py-4 footer">
+            <div class="col-sm-10 mx-auto">
+                <div class="row text-white">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="text-center">
+                            <a href=""><img src="img/logo1.png" height="140px" alt="image not available" /></a>
+                        </div>
+                        <p class="mt-2" style="font-size:14px;font-weight:500;text-align:justify;line-height:25px">
+                            Nalanda Open University is a State Open University duly established under the Act of Bihar
+                            Government and is also recognized by Distance Education Council, IGNOU, Maidan Garhi, New
+                            Delhi.
+                        </p>
+                        <div class="footer-icon text-lg-start text-center">
+                            <a href="#"><i class="fa-brands fa-facebook-f mt-2 pt-1"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter mt-2 pt-1"></i></a>
+                            <a href="#"><i class="fa-brands fa-google-plus-g mt-2 pt-1"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in mt-2 pt-1"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram mt-2 pt-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="pt-5" style="height:140px;">
+                            <h3>Useful Links</h3>
+                            <div style="width:120px;height:3px;position:relative">
+                                <div style="width:90px;height:3px;background-color:#EF6603;position:absolute;top:0"></div>
+                                <div style="position:absolute;top:0;width:100%">
+                                        <marquee direction="right">
+                                                <div class="d-flex">
+                                                    <div style="width:10px;height:3px;background-color:white"></div>&nbsp;&nbsp;<div
+                                                        style="width:10px;height:3px;background-color:white">&nbsp;&nbsp;</div>
+                                                </div>
+                                            </marquee>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="list-unstyled px-3">
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">Home</a></li>
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">About Portal</a></li>
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">Services</a></li>
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">Contact Us</a></li>
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">Courses</a></li>
+                            <li class="my-1"><i class="fa-solid fa-arrow-right pe-3"></i><a href="">Study Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="pt-5" style="height:140px;">
+                            <h3>Contact Info</h3>
+                            <div style="width:120px;height:3px;position:relative">
+                                <div style="width:90px;height:3px;background-color:#EF6603;position:absolute;top:0"></div>
+                                <div style="position:absolute;top:0;width:100%">
+                                        <marquee direction="right">
+                                                <div class="d-flex">
+                                                    <div style="width:10px;height:3px;background-color:white"></div>&nbsp;&nbsp;<div
+                                                        style="width:10px;height:3px;background-color:white">&nbsp;&nbsp;</div>
+                                                </div>
+                                            </marquee>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 style="font-size:18px"><i class="fa-solid fa-location-dot pe-2"></i>NOU</h6>
+                        <p style="font-size:14px;font-weight:500;text-align:justify">
+                                2nd/3rd Floor, Biscomaun Bhawan, Gandhi Maidan, Patna 800 001 (BIHAR).
+                        </p>
+
+                        <h6 class="mt-4" style="font-size:18px"><i class="fa-solid fa-phone-volume pe-2"></i>+91 7080102007</h6>
+                        <p style="font-size:14px;font-weight:500;text-align:justify">Give us a call</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <div class="pt-5" style="height:140px;">
+                            <h3>Subscribe</h3>
+                            <div style="width:120px;height:3px;position:relative">
+                                <div style="width:90px;height:3px;background-color:#EF6603;position:absolute;top:0"></div>
+                                <div style="position:absolute;top:0;width:100%">
+                                        <marquee direction="right">
+                                                <div class="d-flex">
+                                                    <div style="width:10px;height:3px;background-color:white"></div>&nbsp;&nbsp;<div
+                                                        style="width:10px;height:3px;background-color:white">&nbsp;&nbsp;</div>
+                                                </div>
+                                            </marquee>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <p style="font-size:14px;font-weight:500;text-align:justify">
+                                Fill the detail below to receive the manual of the NOU e-Gyan Portal
+                        </p>
+
+                        <div class="mt-4 rounded-pill bg-primary email-input d-flex" style="height:40px;">
+                            <input type="email" placeholder="Email Address" class="ps-3" style="color:#6C757D;background-color:#2E2E2E;border:none;border-radius:50px 0 0 50px;width:70%"/>
+                            <a href="" ><i class="fa-brands fa-telegram" style="font-size:19px"></i></a>
+                        </div>
+
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-white m-0 py-3 text-center" style="background-color:#660000;">
+            <div class="col-sm-12">
+                <p class="m-0" style="font-size:18px">© Copyright 2025 Designed & Developed By | Softpro India Computer Technologies (P) Ltd.</p>
+            </div>
+
+        </div>
+        <!-- footer end -->
+</div>
+        <!-- outer end -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <script>
+                AOS.init();
+            </script>   
+        <script src="js/splide.js"></script>
+        <script src="js/splide.min.js"></script>
+        <script src="js/script.js"></script>
+</body>
+
+</html>

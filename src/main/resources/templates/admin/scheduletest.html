@@ -1,0 +1,80 @@
+<html th:replace="~{admin/adminbase::layout(~{::section})}">
+<head>
+
+</head>
+
+<body>
+	<section>
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="text-center text-primary fw-bold">Schedule Test</h3>
+			</div>
+			<div class="col-sm-10 mx-auto shadow my-2 p-4 bg-white">
+			   <p th:if="${msg}" th:text="${msg}" class="text-success text-center"></p>
+				<form method="post" th:object="${dto}">
+					<div class="row px-4">
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Enter Test Name</label>
+							<input type="text" th:field="${dto.testname}" required class="form-control rounded-0 border border-black bg-white text-black" placeholder="Test Name...">
+						</div>
+						
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Select Course</label>
+							<select th:field="${dto.course}" class="form-control rounded-0 border border-black bg-white">
+ 				 			  	<option value="">-Select Your Course-</option>
+ 				 			  	<option value="BCA">BCA</option>
+                             	<option value="MCA">MCA</option>
+                            	<option value="Diploma">Diploma</option>
+                            	<option value="B. Tech">B. Tech</option>
+                            	<option value="M. Tech">M. Tech</option>
+ 				 			</select>
+						</div>
+						
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Select Branch</label>
+							<select th:field="${dto.branch}" class="form-control rounded-0 border border-black bg-white">
+ 				 			  <option value="">-Select Your Branch-</option>
+ 				 			  <option value="IT">IT</option>
+                            	<option value="CS">CS</option>
+                            	<option value="AI/ML">AI/ML</option>
+                            	<option value="Electronics">Electronics</option>
+ 				 			</select>
+						</div>
+						
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Select Year</label>
+							<select th:field="${dto.year}" class="form-control rounded-0 border border-black bg-white">
+ 				 				<option value="">-Select Year-</option>
+ 				 				<option value="1st year">1st Year</option>
+                            	<option value="2nd year">2nd Year</option>
+                            	<option value="3rd year">3rd Year</option>
+                            	<option value="4th year">4th Year</option>
+ 				 			</select>
+						</div>
+						
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Enter No. Of Questions</label>
+							<input type="number" th:field="${dto.numberofquestion}" class="form-control rounded-0 border border-black bg-white text-black" placeholder="No. of Question..." required>
+						</div>
+						
+						<div class="col-sm-6 p-2">
+							<label class="fw-bold">Enter Test Duration(in Hours)</label>
+							<input type="number" th:field="${dto.testDuration}" class="form-control rounded-0 border border-black bg-white text-black" placeholder="Test Duration in Hours 1,2,3.." required>
+						</div>
+						
+						<div class="col-sm-12 p-2">
+							<label class="fw-bold">Start Time For Test</label>
+							<input type="datetime-local" th:field="${dto.starttime}" class="form-control rounded-0 border border-black bg-white text-black" required>
+						</div>
+						
+						<div class="col-sm-12 text-center pt-3">
+							<button type="submit" style="background-color: orangered;" class="btn px-3 py-2 rounded-0 text-white">Schedule Test</button>
+						</div>
+					</div>
+				</form>				
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

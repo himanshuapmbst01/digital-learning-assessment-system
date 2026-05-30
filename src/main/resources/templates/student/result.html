@@ -1,0 +1,56 @@
+<html th:replace="~{student/studentbase::layout(~{::section})}">
+<head></head>
+
+<body>
+    <section>
+        <div class="row">
+            <div th:if="${resultList != null && !resultList.isEmpty()}" class="col-sm-10 p-5 pt-0 mx-auto">
+                <h1 class="text-center mb-4" style="color: black;">Your Test Results</h1>
+                
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col" th:each="result : ${resultList}">
+                        <div class="card shadow-lg">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: orangered;" th:text="${result.testname}"></h5>
+                                <p class="card-text">
+                                    <strong>Congratulations,</strong> <span th:text="${result.name}"></span>!<br>
+                                    You have scored <span th:text="${result.getmarks}" style="color: orangered;"></span> 
+                                    out of <span th:text="${result.totalmarks}" style="color: orangered;"></span>.
+                                </p>
+                                <p>
+                                    <strong>Course:</strong> <span th:text="${result.course}"></span><br>
+                                    <strong>Year:</strong> <span th:text="${result.year}"></span><br>
+                                    <strong>Submitted At:</strong> 
+                                    <span th:text="${#temporals.format(result.submittedAt, 'EEEE, MMM dd yyyy, HH:mm a')}"></span>
+                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a style="background-color: orangered;" class="btn rounded-5 px-4 py-2 text-white" href="stdhome">
+                        Go to Dashboard
+                    </a>
+                </div>
+            </div>
+
+            <div th:if="${resultList == null || resultList.isEmpty()}" class="col-sm-8 p-5 mx-auto shadow bg-white text-center">
+                <h1 class="text-center" style="color: black;">Oops!...</h1>
+                <h3 class="text-center" style="color: orangered;">
+                    Hello, <span th:text="${stdinfo.name}"></span>
+                </h3>
+                <p class="text-muted">
+                    You are not enrolled in any test yet.<br> When you participate in a test, the result will be shown here.
+                </p>
+                
+                <br>
+                <a style="background-color: orangered;" class="btn rounded-5 px-4 py-2 text-white" href="stdhome">
+                    Go to Dashboard
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

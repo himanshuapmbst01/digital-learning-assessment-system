@@ -1,0 +1,42 @@
+<html th:replace="~{student/studentbase::layout(~{::section})}">
+	<head>
+	</head>
+	
+	<body>
+		<section>
+		
+		<div class="row">
+			<div class="col-sm-12 mx-auto p-3 bg-white shadow rounded-2">
+			<h1 class="text-center text-info py-2">View Recent Uploaded Assignments</h1>
+			
+			<div class="table-responsive">	
+				<table id="myTable" class="table table-bordered display">
+					<thead class="text-center table-dark">
+						<tr>
+							
+							<th class="text-center">Subject</th>
+							<th class="text-center">Topic</th>
+							<th class="text-center">Assignment</th>
+							<th class="text-center">Posted Date</th>
+							
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr th:each="m:${smlist}">
+							<td th:text="${m.subject}"></td>
+							<td th:text="${m.topic}"></td>
+							<td>
+							   <a th:href="@{'/mat/'+${m.filename}}" target="_blank">
+							   	<span th:text="${m.filename}"></span>
+							   </a>
+							</td>
+							<td th:text="${m.posteddate}"></td>
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</section>
+	</body>
+</html>

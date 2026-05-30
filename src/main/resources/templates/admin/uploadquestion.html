@@ -1,0 +1,79 @@
+<html th:replace="~{admin/adminbase::layout(~{::section})}">
+<head>
+
+</head>
+
+<body>
+	<section>
+		<div class="row">
+			<div class="col-sm-8 p-4 mx-auto shadow bg-white">
+				<h3 class="text-center text-primary pb-4">Upload Bulk Question By CSV File</h3>
+		
+				<form method="post" enctype="multipart/form-data">
+					<table class="w-75 mx-auto mt-2 text-dark">
+					<tr>
+						<th class="py-3">Select Course</th>
+						<td>
+							<select th:field="${dto.course}" class="form-control rounded-0 border border-black bg-white">
+								<option value="">-Select Course-</option>
+								<option value="BCA">BCA</option>
+                            	<option value="MCA">MCA</option>
+                            	<option value="Diploma">Diploma</option>
+                            	<option value="B. Tech">B. Tech</option>
+                            	<option value="M. Tech">M. Tech</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<th class="py-3">Select Branch</th>
+						<td>
+							<select th:field="${dto.branch}" class="form-control rounded-0 border border-black bg-white">
+                             	<option value="IT">IT</option>
+                            	<option value="CS">CS</option>
+                            	<option value="AI/ML">AI/ML</option>
+                            	<option value="Electronics">Electronics</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr>
+						<th class="py-3">Select Year</th>
+						<td>
+							<select class="form-control rounded-0 border border-black bg-white" th:field="${dto.year}">
+                            	<option value="1st year">1st Year</option>
+                            	<option value="2nd year">2nd Year</option>
+                            	<option value="3rd year">3rd Year</option>
+                            	<option value="4th year">4th Year</option>
+                        	</select>
+						</td>
+					</tr>
+					
+					
+					<tr>
+						<th class="py-3">Upload CSV File</th>
+						<td>
+							<input type="file" required accept=".csv" name="csvfile" class="form-control rounded-0 border border-black">
+						</td>
+					</tr>
+				</table>
+				<hr>
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary rounded-0 px-3 py-2">Upload File</button>
+				</div>
+				</form>
+			</div>
+		</div>
+		
+		<input type="hidden" th:if="${msg}" th:value="${msg}" id="msg">
+		<script>
+			var msg = document.getElementById("msg");
+			if(msg!=null)
+			{
+				alert(msg.value);	
+			}
+		</script>
+		
+	</section>
+</body>
+</html>

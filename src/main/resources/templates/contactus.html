@@ -1,0 +1,170 @@
+<html th:replace="base::layout(~{::section})">
+<head>
+</head>
+<body>
+	<section>
+
+
+		<!-- slider like image start -->
+		<div class="row header-slider-course m-0">
+			<div class="col-sm-12 p-0">
+				<div class="row py-5 m-0">
+					<div class="col-sm-10 pt-5 mt-4 mx-auto">
+						<h4 class="pt-2">Contact Us</h4>
+						<h6 class="text-end text-white">
+							<a href="index.html" style="color: white; text-decoration: none"><i
+								class="fa-solid fa-house"></i> Home</a> / Contact Us
+						</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- slider like image end -->
+		<div class="row m-0 py-5">
+			<div class="col-sm-10 mx-auto">
+				<div class="d-flex">
+					<p class="m-0" style="color: rgb(170, 168, 168);">CONTACT</p>
+					<hr class="w-25 text-orange">
+				</div>
+				<h2 class="fw-bold">
+					CONTACT<span class="text-brown"> US </span>
+				</h2>
+				<div class="row px-4">
+
+					<div class="col-md-6 px-2 my-3"
+						style="background: linear-gradient(rgba(139, 0, 0, .7), rgba(255, 255, 255, .3)), url(img/university.jpg); background-attachment: cover; background-repeat: no-repeat; background-size: 100% 100%; height: 50vh; box-shadow: 2px 2px 10px grey;">
+					</div>
+
+					<div class="col-md-6 px-4 my-3">
+						<p class="m-0" style="color: #FFA500; font-size: 17px;">You
+							can find on us</p>
+						<h2 style="color: darkred;" class="fw-bold">Our Address</h2>
+						<p class="m-0" style="font-size: 18px;">
+							<span class="fw-bold" style="color: #FFA500; font-size: 22px;">Address
+								: </span> 2nd/3rd Floor,Biscomaun Bhawan,Gandhi Maidan,Patna- 800001
+						</p>
+						<p class="m-0" style="font-size: 18px;">
+							<span class="fw-bold" style="color: #FFA500; font-size: 22px;">Telephone
+								:</span> 0612-2201013, 0612-2206916
+						</p>
+						<p class="m-0" style="font-size: 18px;">
+							<span class="fw-bold" style="color: #FFA500; font-size: 22px;">Fax
+								:</span> 0612-2201001
+						</p>
+						<p class="m-0" style="font-size: 18px;">
+							<span class="fw-bold" style="color: #FFA500; font-size: 22px;">Email
+								:</span> nou@nou.ac.in
+						</p>
+					</div>
+				</div>
+
+				<div class="row pt-5" style="justify-content: space-around">
+					<div class="col-sm-3 text-center my-2">
+						<div class="contact-iconp">
+							<i class="fa-solid fa-location-dot"
+								style="color: #EF6603; font-size: 44px;"></i>
+						</div>
+						<h3 class="mt-3" style="color: darkred; font-size: 24px;">Location:</h3>
+						<p class="m-0 mt-2" style="font-size: 15px;">2nd/3rd Floor,
+							Biscomaun</p>
+						<p class="m-0 mt-1" style="font-size: 15px;">Gandhi Maidan,
+							Patna</p>
+					</div>
+					<div class="col-sm-3 text-center my-2">
+						<div class="contact-iconp">
+							<i class="fa-solid fa-envelope"
+								style="color: #EF6603; font-size: 44px;"></i>
+						</div>
+						<h3 class="mt-3" style="color: darkred; font-size: 24px;">Email:</h3>
+						<p class="m-0 mt-2" style="font-size: 15px;">nou@nou.ac.in</p>
+						<p class="m-0 mt-1" style="font-size: 15px;">registrar@nou.ac.in</p>
+					</div>
+					<div class="col-sm-3 text-center my-2">
+						<div class="contact-iconp">
+							<i class="fa-solid fa-phone"
+								style="color: #EF6603; font-size: 44px;"></i>
+						</div>
+						<h3 class="mt-3" style="color: darkred; font-size: 24px;">Phone:</h3>
+						<p class="m-0 mt-2" style="font-size: 15px;">0612-2201013</p>
+						<p class="m-0 mt-1" style="font-size: 15px;">0612-2206916</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row m-0"
+			style="border-top: 1px solid gray; background-image: url('img/contactusimg.avif'); background-size: 100% 100%;">
+			<div class="col-sm-12 bg-dark bg-opacity-50">
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-4 shadow my-4 bg-white">
+						<div th:if="${message}">
+							<p th:text="${message}"
+								class="alert alert-success alert-dismissible"></p>
+						</div>
+
+						<form class="form-group" method="post" th:object="${dto}">
+							<h2 class="text-center" style="font-family: monotype corsiva;">Enquiry
+								Form</h2>
+
+							<table class="table" style="margin: auto;">
+								<tr>
+									<td>Enter Name</td>
+									<td><input type="text" required class="form-control"
+										th:field="${dto.name}" /></td>
+								</tr>
+								<tr>
+									<td>Select Gender</td>
+									<td><input type="radio" required class="form-check-input"
+										value="Male" th:field="${dto.gender}" />Male <input
+										type="radio" required class="form-check-input" value="Female"
+										th:field="${dto.gender}" />Female</td>
+								</tr>
+								<tr>
+									<td>Enter Contact No</td>
+									<td><input type="number" required class="form-control"
+										th:field="${dto.contactno}" /></td>
+								</tr>
+								<tr>
+									<td>Enter Email Address</td>
+									<td><input type="email" required class="form-control"
+										th:field="${dto.emailaddress}" /></td>
+								</tr>
+								<tr>
+									<td>Enter Your Address</td>
+									<td><input type="text" required class="form-control"
+										th:field="${dto.address}" /></td>
+								</tr>
+								
+								<tr>
+									<td>Enquiry Text</td>
+									<td><textarea required class="form-control"
+											th:field="${dto.enquirytext}"></textarea></td>
+								</tr>	
+							</table>
+							
+							<div class="text-center pt-3">
+								<button type="submit" class="btn bg-brown px-4 py-2 mx-auto fw-bold" style="border: 2px solid #8b1817;">Submit</button>
+							</div>		
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row m-0">
+			<div class="col-sm-10 mx-auto p-2" style="height: 50vh;">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.109543685602!2d85.26967227459306!3d25.964447500199235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585a72898067%3A0x332ef319c1947f5e!2sNalanda%20Open%20University!5e0!3m2!1sen!2sin!4v1741120069645!5m2!1sen!2sin"
+					width="100%" height="100%" style="border: 0;" allowfullscreen=""
+					loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+		</div>
+		<!-- main end -->
+
+	</section>
+</body>
+</html>
